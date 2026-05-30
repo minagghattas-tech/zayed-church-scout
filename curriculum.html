@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المنهج والأهداف · كشافة كنائس زايد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Reem+Kufi:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+  .cur-hero{background:linear-gradient(160deg,var(--teal-deep)0%,var(--indigo)100%);color:#fff;
+    padding:56px 24px 44px;text-align:center;position:relative;overflow:hidden;}
+  .cur-hero::before{content:'';position:absolute;top:-100px;right:-80px;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(212,167,58,0.2)0%,transparent 70%);border-radius:50%;}
+  .cur-hero-inner{position:relative;z-index:2;max-width:820px;margin:0 auto;}
+  .cur-hero .eyebrow{font-family:var(--font-accent);font-size:12px;letter-spacing:6px;color:var(--gold);margin-bottom:12px;}
+  .cur-hero h1{font-family:var(--font-display);font-size:clamp(32px,5vw,50px);margin:0 0 12px;}
+  .cur-hero p{font-size:15px;color:rgba(255,255,255,0.85);max-width:640px;margin:0 auto;line-height:1.7;}
+
+  .cur-controls{background:var(--paper-warm);padding:18px 24px;border-bottom:1px solid rgba(45,138,150,0.08);
+    position:sticky;top:56px;z-index:50;}
+  .cur-controls-inner{max-width:1100px;margin:0 auto;display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:center;}
+  .ctrl-group{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .ctrl-label{font-family:var(--font-accent);font-size:11px;letter-spacing:2px;color:var(--ink-soft);}
+  .ctrl-btn{background:#fff;border:1px solid rgba(45,138,150,0.2);color:var(--ink-soft);padding:7px 16px;
+    border-radius:100px;font-family:var(--font-modern);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;}
+  .ctrl-btn:hover{border-color:var(--teal);}
+  .ctrl-btn.active{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff;}
+
+  .cur-wrap{max-width:1100px;margin:0 auto;padding:36px 24px 60px;}
+  .sector-title{text-align:center;margin-bottom:8px;font-family:var(--font-display);font-size:30px;color:var(--indigo);}
+  .sector-sub{text-align:center;font-family:var(--font-modern);font-size:11px;letter-spacing:3px;
+    color:var(--teal-deep);text-transform:uppercase;margin-bottom:28px;}
+
+  .axes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;}
+  .axis-card{background:#fff;border-radius:16px;padding:22px;box-shadow:0 4px 16px var(--shadow);
+    border:1px solid rgba(45,138,150,0.1);border-top:4px solid var(--teal);animation:fade-in-up .5s ease both;}
+  .axis-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .axis-emoji{font-size:26px;}
+  .axis-name{font-family:var(--font-accent);font-size:20px;font-weight:700;color:var(--indigo);}
+  .axis-card ul{list-style:none;padding:0;margin:0;}
+  .axis-card li{position:relative;padding:7px 18px 7px 0;font-size:14px;color:var(--ink-soft);
+    line-height:1.6;border-bottom:1px dashed rgba(45,138,150,0.12);}
+  .axis-card li:last-child{border-bottom:none;}
+  .axis-card li::before{content:'◂';position:absolute;right:0;top:9px;color:var(--coral);font-size:11px;}
+
+  .cur-notes{max-width:900px;margin:40px auto 0;background:linear-gradient(135deg,rgba(45,138,150,0.05),rgba(212,167,58,0.05));
+    border-radius:18px;padding:26px 28px;border-right:4px solid var(--gold);}
+  .cur-notes h3{font-family:var(--font-accent);font-size:18px;color:var(--indigo);margin-bottom:14px;}
+  .cur-notes ul{list-style:none;padding:0;margin:0;}
+  .cur-notes li{padding:7px 22px 7px 0;position:relative;font-size:13px;color:var(--ink-soft);line-height:1.7;}
+  .cur-notes li::before{content:'✦';position:absolute;right:0;top:7px;color:var(--gold-deep);font-size:12px;}
+  .src-tag{text-align:center;margin-top:18px;font-size:11px;color:var(--ink-soft);font-family:var(--font-modern);opacity:0.7;}
+</style>
+</head>
+<body>
+
+<div id="topnav-mount"></div>
+
+<header class="cur-hero">
+  <div class="cur-hero-inner">
+    <div class="eyebrow">CURRICULUM · المنهج والأهداف</div>
+    <h1>أهداف النشاط الكشفي</h1>
+    <p>المرجع التعليمي للقادة — ٦ محاور × ٣ سنوات لكل قطاع. دي الأرضية اللي كل قائد فريق يبني عليها برنامجه التفصيلي. كشافة بحرية فقط.</p>
+  </div>
+</header>
+
+<div class="cur-controls">
+  <div class="cur-controls-inner">
+    <div class="ctrl-group">
+      <span class="ctrl-label">القطاع:</span>
+      <button class="ctrl-btn active" data-sector="cubs" onclick="setSector('cubs')">🟠 أشبال</button>
+      <button class="ctrl-btn" data-sector="junior" onclick="setSector('junior')">🔴 مبتدئ</button>
+      <button class="ctrl-btn" data-sector="advanced" onclick="setSector('advanced')">🟢 متقدم</button>
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">السنة:</span>
+      <span id="year-buttons"></span>
+    </div>
+  </div>
+</div>
+
+<div class="cur-wrap">
+  <h2 class="sector-title" id="sector-title"></h2>
+  <div class="sector-sub" id="sector-sub"></div>
+  <div class="axes-grid" id="axes-grid"></div>
+
+  <div class="cur-notes">
+    <h3>📌 ملاحظات منهجية</h3>
+    <ul id="notes-list"></ul>
+    <div class="src-tag">مرجع تعليمي للمجموعة الكشفية لكنائس زايد · كشافة بحرية</div>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+
+<script src="assets/zs.js"></script>
+<script src="assets/curriculum_data.js"></script>
+<script>
+  ZS.requireAuth();
+  ZS.mountChrome('curriculum');
+
+  const G = CURRICULUM_GOALS;
+  let sector = 'cubs';
+  let year = null;
+
+  function renderYearButtons(){
+    const years = Object.keys(G.sectors[sector].years);
+    if (!year || !years.includes(year)) year = years[0];
+    document.getElementById('year-buttons').innerHTML = years.map(y =>
+      `<button class="ctrl-btn ${y===year?'active':''}" onclick="setYear('${y}')">${y}</button>`
+    ).join(' ');
+  }
+
+  function render(){
+    const s = G.sectors[sector];
+    document.getElementById('sector-title').textContent = s.name;
+    document.getElementById('sector-sub').textContent = s.sub + ' · ' + year;
+    const yearData = s.years[year];
+    document.getElementById('axes-grid').innerHTML = G.axes.map((ax,i) => {
+      const items = yearData[ax.id] || [];
+      if (!items.length) return '';
+      return `
+        <div class="axis-card" style="border-top-color:${ax.color};animation-delay:${i*0.05}s">
+          <div class="axis-head">
+            <span class="axis-emoji">${ax.emoji}</span>
+            <span class="axis-name">${ax.name}</span>
+          </div>
+          <ul>${items.map(t => `<li>${t}</li>`).join('')}</ul>
+        </div>`;
+    }).join('');
+  }
+
+  function setSector(s){
+    sector = s;
+    document.querySelectorAll('[data-sector]').forEach(b => b.classList.toggle('active', b.dataset.sector === s));
+    renderYearButtons();
+    render();
+  }
+  function setYear(y){ year = y; renderYearButtons(); render(); }
+
+  document.getElementById('notes-list').innerHTML = G.notes.map(n => `<li>${n}</li>`).join('');
+  renderYearButtons();
+  render();
+</script>
+
+</body>
+</html>

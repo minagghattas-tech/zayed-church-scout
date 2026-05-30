@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المتابعة والتقييم · كشافة كنائس زايد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Reem+Kufi:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+<style>
+  .trk-hero{background:linear-gradient(160deg,var(--coral-deep)0%,var(--burgundy)100%);color:#fff;
+    padding:52px 24px 40px;text-align:center;position:relative;overflow:hidden;}
+  .trk-hero::before{content:'';position:absolute;top:-90px;left:-70px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(212,167,58,0.22)0%,transparent 70%);border-radius:50%;}
+  .trk-hero-inner{position:relative;z-index:2;max-width:780px;margin:0 auto;}
+  .trk-hero .eyebrow{font-family:var(--font-accent);font-size:12px;letter-spacing:6px;color:var(--gold);margin-bottom:10px;}
+  .trk-hero h1{font-family:var(--font-display);font-size:clamp(30px,5vw,46px);margin:0 0 10px;}
+  .trk-hero p{font-size:14px;color:rgba(255,255,255,0.85);max-width:600px;margin:0 auto;line-height:1.7;}
+
+  .trk-bar{background:#fff;border-bottom:1px solid rgba(45,138,150,0.12);padding:16px 24px;position:sticky;top:56px;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+  .trk-bar-inner{max-width:1100px;margin:0 auto;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
+  .trk-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .trk-controls label{font-family:var(--font-accent);font-size:11px;letter-spacing:1px;color:var(--ink-soft);}
+  .trk-select{background:var(--paper);border:1px solid rgba(45,138,150,0.25);border-radius:10px;padding:8px 14px;
+    font-family:var(--font-body);font-size:14px;color:var(--ink);cursor:pointer;}
+  .trk-actions{display:flex;gap:8px;flex-wrap:wrap;}
+  .trk-btn{background:#fff;border:1px solid var(--teal);color:var(--teal-deep);padding:8px 14px;border-radius:8px;
+    font-family:var(--font-modern);font-size:13px;cursor:pointer;transition:all .2s;}
+  .trk-btn:hover{background:var(--teal-fade);}
+  .trk-btn.save{background:var(--coral);border-color:var(--coral-deep);color:#fff;}
+  .trk-btn.save:hover{background:var(--coral-deep);}
+
+  .trk-wrap{max-width:1100px;margin:0 auto;padding:30px 24px 60px;}
+  .trk-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+  .trk-tab{background:var(--paper-warm);border:none;padding:10px 20px;border-radius:100px;font-family:var(--font-accent);
+    font-size:14px;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .2s;}
+  .trk-tab.active{background:var(--indigo);color:#fff;}
+
+  /* attendance table */
+  .att-table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px var(--shadow);}
+  .att-table th{background:var(--indigo);color:#fff;padding:12px;font-family:var(--font-accent);font-size:13px;font-weight:600;}
+  .att-table td{padding:10px 12px;border-bottom:1px solid rgba(45,138,150,0.08);font-size:14px;}
+  .att-table tr:last-child td{border-bottom:none;}
+  .att-table tr:hover td{background:var(--teal-fade);}
+  .m-name{font-weight:600;color:var(--indigo);}
+  .att-check{display:flex;gap:6px;justify-content:center;}
+  .att-opt{width:34px;height:34px;border-radius:8px;border:1px solid rgba(45,138,150,0.2);background:#fff;cursor:pointer;
+    font-size:15px;transition:all .15s;display:flex;align-items:center;justify-content:center;}
+  .att-opt.present.on{background:var(--success);color:#fff;border-color:var(--success);}
+  .att-opt.absent.on{background:var(--burgundy);color:#fff;border-color:var(--burgundy);}
+  .att-opt.excused.on{background:var(--warning);color:#fff;border-color:var(--warning);}
+  .score-input{width:64px;padding:6px 8px;border:1px solid rgba(45,138,150,0.25);border-radius:8px;text-align:center;font-family:var(--font-modern);font-size:14px;}
+
+  /* progress cards */
+  .prog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+  .prog-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px var(--shadow);border:1px solid rgba(45,138,150,0.1);}
+  .prog-card h3{font-family:var(--font-accent);font-size:17px;color:var(--indigo);margin-bottom:4px;}
+  .prog-card .grade{font-size:12px;color:var(--ink-soft);margin-bottom:12px;}
+  .prog-stat{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px dashed rgba(45,138,150,0.12);font-size:13px;}
+  .prog-stat:last-child{border-bottom:none;}
+  .prog-stat .v{font-family:var(--font-accent);font-weight:700;color:var(--teal-deep);font-size:16px;}
+  .bar{height:8px;border-radius:6px;background:var(--paper-warm);overflow:hidden;margin-top:10px;}
+  .bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--success));border-radius:6px;transition:width .4s;}
+
+  .empty{text-align:center;padding:60px 24px;color:var(--ink-soft);}
+  .empty .icon{font-size:64px;opacity:0.35;margin-bottom:14px;}
+  .empty h3{font-family:var(--font-display);font-size:22px;color:var(--ink);margin-bottom:8px;}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--indigo);color:#fff;
+    padding:12px 24px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .3s;z-index:200;}
+  .toast.show{opacity:1;}
+</style>
+</head>
+<body>
+
+<div id="topnav-mount"></div>
+
+<header class="trk-hero">
+  <div class="trk-hero-inner">
+    <div class="eyebrow">TRACKING · المتابعة والتقييم</div>
+    <h1>متابعة الأولاد</h1>
+    <p>سجّل الحضور وادّي درجات لكل اجتماع، وتابع تقدّم كل ولد على مدار الموسم. البيانات بتتحفظ على جهازك وتقدر تصدّرها وتشاركها مع باقي القادة.</p>
+  </div>
+</header>
+
+<div class="trk-bar">
+  <div class="trk-bar-inner">
+    <div class="trk-controls">
+      <label>القطاع:</label>
+      <select class="trk-select" id="sel-sector" onchange="onSectorChange()">
+        <option value="cubs">🟠 أشبال وزهرات</option>
+        <option value="junior">🔴 مبتدئ ومرشدات</option>
+        <option value="advanced">🟢 متقدم ومتقدمات</option>
+      </select>
+      <label>الاجتماع:</label>
+      <select class="trk-select" id="sel-meeting" onchange="render()"></select>
+    </div>
+    <div class="trk-actions">
+      <button class="trk-btn save" onclick="saveAll()">💾 حفظ</button>
+      <button class="trk-btn" onclick="exportData()">📤 تصدير</button>
+      <button class="trk-btn" onclick="document.getElementById('imp').click()">📥 استيراد</button>
+      <input type="file" id="imp" accept=".json" style="display:none" onchange="importData(event)">
+    </div>
+  </div>
+</div>
+
+<div class="trk-wrap">
+  <div class="trk-tabs">
+    <button class="trk-tab active" data-tab="attendance" onclick="setTab('attendance')">📋 الحضور والدرجات</button>
+    <button class="trk-tab" data-tab="progress" onclick="setTab('progress')">📈 تقدّم الأولاد</button>
+  </div>
+  <div id="panel"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div id="footer-mount"></div>
+
+<script src="assets/zs.js"></script>
+<script>
+  ZS.requireAuth();
+  ZS.mountChrome('tracking');
+
+  const MEMBERS_KEY = 'zs_members_v1';
+  const TRACK_KEY = 'zs_tracking_v1';
+  const MEETINGS = { cubs:10, junior:10, advanced:12 };
+  const SECTOR_LABEL = { cubs:'أشبال', junior:'مبتدئ', advanced:'متقدم' };
+
+  let members = [];
+  let track = {};       // track[sector][meetingNum][memberId] = {att, score}
+  let tab = 'attendance';
+
+  try { members = JSON.parse(localStorage.getItem(MEMBERS_KEY) || '[]'); } catch(e){ members = []; }
+  try { track = JSON.parse(localStorage.getItem(TRACK_KEY) || '{}'); } catch(e){ track = {}; }
+
+  // populate meeting dropdown
+  function fillMeetings(){
+    const sector = document.getElementById('sel-sector').value;
+    const n = MEETINGS[sector];
+    const sel = document.getElementById('sel-meeting');
+    let opts = '';
+    for (let i=1;i<=n;i++) opts += `<option value="${i}">اجتماع ${toAr(i)}</option>`;
+    sel.innerHTML = opts;
+  }
+
+  function toAr(n){ const ar=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩']; return String(n).split('').map(d=>ar[+d]??d).join(''); }
+
+  function cell(sector,meeting,id){
+    track[sector] = track[sector] || {};
+    track[sector][meeting] = track[sector][meeting] || {};
+    track[sector][meeting][id] = track[sector][meeting][id] || { att:null, score:'' };
+    return track[sector][meeting][id];
+  }
+
+  function sectorMembers(sector){ return members.filter(m => m.sector === sector); }
+
+  function onSectorChange(){ fillMeetings(); render(); }
+
+  function setTab(t){
+    tab = t;
+    document.querySelectorAll('.trk-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
+    render();
+  }
+
+  function setAtt(id, val){
+    const sector = document.getElementById('sel-sector').value;
+    const meeting = +document.getElementById('sel-meeting').value;
+    const c = cell(sector,meeting,id);
+    c.att = (c.att === val) ? null : val;
+    render();
+  }
+
+  function setScore(id, val){
+    const sector = document.getElementById('sel-sector').value;
+    const meeting = +document.getElementById('sel-meeting').value;
+    cell(sector,meeting,id).score = val;
+  }
+
+  function renderAttendance(){
+    const sector = document.getElementById('sel-sector').value;
+    const meeting = +document.getElementById('sel-meeting').value;
+    const list = sectorMembers(sector);
+    if (!list.length) return emptyState();
+    let rows = list.map(m => {
+      const c = cell(sector,meeting,m.id);
+      return `<tr>
+        <td class="m-name">${esc(m.name)}</td>
+        <td>${esc(m.team||'—')}</td>
+        <td>
+          <div class="att-check">
+            <button class="att-opt present ${c.att==='present'?'on':''}" title="حاضر" onclick="setAtt('${m.id}','present')">✓</button>
+            <button class="att-opt excused ${c.att==='excused'?'on':''}" title="بعذر" onclick="setAtt('${m.id}','excused')">~</button>
+            <button class="att-opt absent ${c.att==='absent'?'on':''}" title="غائب" onclick="setAtt('${m.id}','absent')">✕</button>
+          </div>
+        </td>
+        <td style="text-align:center"><input class="score-input" type="number" min="0" max="100" value="${c.score}" placeholder="—" onchange="setScore('${m.id}',this.value)"></td>
+      </tr>`;
+    }).join('');
+    document.getElementById('panel').innerHTML = `
+      <table class="att-table">
+        <thead><tr><th>الاسم</th><th>الطليعة</th><th>الحضور</th><th>الدرجة (من ١٠٠)</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <p style="text-align:center;margin-top:14px;font-size:12px;color:var(--ink-soft)">✓ حاضر · ~ بعذر · ✕ غائب — متنساش تدوس حفظ</p>`;
+  }
+
+  function renderProgress(){
+    const sector = document.getElementById('sel-sector').value;
+    const list = sectorMembers(sector);
+    if (!list.length) return emptyState();
+    const n = MEETINGS[sector];
+    const cards = list.map(m => {
+      let present=0, total=0, scoreSum=0, scoreCount=0;
+      for (let i=1;i<=n;i++){
+        const c = (track[sector]?.[i]?.[m.id]);
+        if (c){
+          if (c.att){ total++; if (c.att==='present') present++; }
+          if (c.score!=='' && c.score!=null){ scoreSum+=(+c.score); scoreCount++; }
+        }
+      }
+      const attPct = total ? Math.round(present/total*100) : 0;
+      const avg = scoreCount ? Math.round(scoreSum/scoreCount) : 0;
+      return `<div class="prog-card">
+        <h3>${esc(m.name)}</h3>
+        <div class="grade">${esc(m.grade||'')} ${m.team?'· '+esc(m.team):''}</div>
+        <div class="prog-stat"><span>نسبة الحضور</span><span class="v">${toAr(attPct)}٪</span></div>
+        <div class="bar"><div class="bar-fill" style="width:${attPct}%"></div></div>
+        <div class="prog-stat"><span>حضر / مسجّل</span><span class="v">${toAr(present)} / ${toAr(total)}</span></div>
+        <div class="prog-stat"><span>متوسط الدرجات</span><span class="v">${toAr(avg)}</span></div>
+      </div>`;
+    }).join('');
+    document.getElementById('panel').innerHTML = `<div class="prog-grid">${cards}</div>`;
+  }
+
+  function emptyState(){
+    document.getElementById('panel').innerHTML = `
+      <div class="empty">
+        <div class="icon">👥</div>
+        <h3>مفيش أولاد في القطاع ده لسة</h3>
+        <p>ضيف الأولاد من صفحة «الأولاد» الأول، وبعدها هتقدر تسجّل حضورهم ودرجاتهم هنا.</p>
+        <a class="btn btn-primary" href="members.html">الذهاب لصفحة الأولاد ←</a>
+      </div>`;
+  }
+
+  function render(){ tab==='attendance' ? renderAttendance() : renderProgress(); }
+
+  function saveAll(){
+    try { localStorage.setItem(TRACK_KEY, JSON.stringify(track)); showToast('💾 اتحفظ'); }
+    catch(e){ showToast('⚠️ فشل الحفظ'); }
+  }
+
+  function exportData(){
+    const blob = new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),tracking:track},null,2)],{type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `zayed-tracking-${new Date().toISOString().slice(0,10)}.json`; a.click();
+    URL.revokeObjectURL(url); showToast('📤 تم التصدير');
+  }
+  function importData(e){
+    const f = e.target.files[0]; if(!f) return;
+    const r = new FileReader();
+    r.onload = ev => {
+      try { const d = JSON.parse(ev.target.result);
+        if (!d.tracking) return showToast('⚠️ الملف مش صحيح');
+        track = d.tracking; saveAll(); render(); showToast('✓ تم الاستيراد');
+      } catch(err){ showToast('⚠️ خطأ في الملف'); }
+    };
+    r.readAsText(f); e.target.value='';
+  }
+
+  function esc(s){ return (s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function showToast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+
+  fillMeetings();
+  render();
+</script>
+
+</body>
+</html>
